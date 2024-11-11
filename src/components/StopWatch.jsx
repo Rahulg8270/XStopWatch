@@ -11,7 +11,7 @@ const StopWatch = () => {
     if (isRunning) {
       intervalId.current = setInterval(() => {
         setSeconds((prevSeconds) => {
-          if (prevSeconds === 59) {
+          if (prevSeconds === 60) {
             setMinutes((prevMinutes) => prevMinutes + 1);
             return 0;
           } else {
@@ -39,10 +39,10 @@ const StopWatch = () => {
     <div>
       <h1>Stopwatch</h1>
       <div>Time: {`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`}</div>
-      <button type="button" onClick={() => setIsRunning((prevState) => !prevState)}>
+      <button onClick={() => setIsRunning((prevState) => !prevState)}>
         {isRunning ? "Stop" : "Start"}
       </button>
-      <button type="button"
+      <button
         style={{
           marginTop: "20px",
         }}
