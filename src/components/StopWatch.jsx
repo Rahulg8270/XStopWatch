@@ -31,12 +31,13 @@ const StopWatch = () => {
   const handleReset = () => {
     clearInterval(intervalId.current);
     setMinutes(0);
-    setSeconds(`${0}`);
+    setSeconds(0)
+    // setSeconds(`${0}`);
   };
   return (
     <div>
       <h1>Stop Watch</h1>
-      <div>Timer: {`${minutes}: ${seconds < 10 ? "0" : ""}${seconds}`}</div>
+      <div>Timer: {`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`}</div>
       <button onClick={() => setIsRunning((prevState) => !prevState)}>
         {isRunning ? "Stop" : "Start"}
       </button>
