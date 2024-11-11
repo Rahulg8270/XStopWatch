@@ -39,10 +39,10 @@ const StopWatch = () => {
     <div>
       <h1>Stop Watch</h1>
       <div>Timer: {`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`}</div>
-      <button onClick={() => setIsRunning((prevState) => !prevState)}>
+      <button type="button" onClick={() => setIsRunning((prevState) => !prevState)}>
         {isRunning ? "Stop" : "Start"}
       </button>
-      <button
+      <button type="button"
         style={{
           marginTop: "20px",
         }}
