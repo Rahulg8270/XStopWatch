@@ -19,7 +19,7 @@ const StopWatch = () => {
           return 0;
         }
         });
-      }, 100);
+      }, 1000);
     }
 
     return () => {
