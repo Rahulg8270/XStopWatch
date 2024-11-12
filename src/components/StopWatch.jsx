@@ -12,13 +12,12 @@ const StopWatch = () => {
     if (isRunning) {
       intervalId.current = setInterval(() => {
         setSeconds((prevSeconds) => {
-        //   console.log(prevSeconds)
-          if (prevSeconds >= 59) {
-            setMinutes((prevMinutes) => prevMinutes+1);
-            return 0;
-          } else{
-            return prevSeconds+1;
-          }
+        if(prevSeconds < 59){
+          return prevSeconds+1;
+        } else{
+          setMinutes((prevMinutes) => prevMinutes + 1);
+          return 0;
+        }
         });
       }, 100);
     }
@@ -39,7 +38,7 @@ const StopWatch = () => {
   return (
     <div>
       <h1>Stopwatch</h1>
-      <div>Time: {`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`}</div>
+      <div>Time: {`${minutes}:${seconds <= 9 ? "0" : ""}${seconds}`}</div>
       <button
         type="button"
         onClick={() => setIsRunning((prevState) => !prevState)}
