@@ -13,14 +13,14 @@ const StopWatch = () => {
       intervalId.current = setInterval(() => {
         setSeconds((prevSeconds) => {
         //   console.log(prevSeconds)
-          if (prevSeconds === 59) {
+          if (prevSeconds >= 59) {
             setMinutes((prevMinutes) => prevMinutes+1);
             return 0;
           } else{
             return prevSeconds+1;
           }
         });
-      }, 1000);
+      }, 100);
     }
 
     return () => {
