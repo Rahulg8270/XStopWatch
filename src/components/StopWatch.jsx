@@ -6,16 +6,18 @@ const StopWatch = () => {
   const [minutes, setMinutes] = useState(0);
 
   const intervalId = useRef(null);
+  
 
   useEffect(() => {
     if (isRunning) {
       intervalId.current = setInterval(() => {
         setSeconds((prevSeconds) => {
-          if (prevSeconds === 60) {
-            setMinutes((prevMinutes) => prevMinutes + 1);
+        //   console.log(prevSeconds)
+          if (prevSeconds === 59) {
+            setMinutes((prevMinutes) => prevMinutes+1);
             return 0;
-          } else {
-            setSeconds(prevSeconds + 1);
+          } else{
+            return prevSeconds+1;
           }
         });
       }, 1000);
@@ -31,18 +33,21 @@ const StopWatch = () => {
   const handleReset = () => {
     clearInterval(intervalId.current);
     setMinutes(0);
-    setSeconds(0)
-    setIsRunning(false)
-    // setSeconds(`${0}`);
+    setSeconds(0);
+    setIsRunning(false);
   };
   return (
     <div>
       <h1>Stopwatch</h1>
       <div>Time: {`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`}</div>
-      <button onClick={() => setIsRunning((prevState) => !prevState)}>
+      <button
+        type="button"
+        onClick={() => setIsRunning((prevState) => !prevState)}
+      >
         {isRunning ? "Stop" : "Start"}
       </button>
       <button
+        type="button"
         style={{
           marginTop: "20px",
         }}
